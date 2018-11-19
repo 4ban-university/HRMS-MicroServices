@@ -19,4 +19,7 @@ In this project, only the backend of the system is going to be implemented, alth
 3) Install mysql.
 4) Update all spring boot configurations inside resources folder in 
     /src/main/resources/application.properties file according to your own system configurations.
-3) mvn spring-boot:run
+5) mvn spring-boot:run
+6) Run this query in the database.
+  INSERT INTO ${DATABSE NAME}.roles(name) VALUES('ROLE_EMPLOYEE');
+  INSERT INTO ${DATABSE NAME}.roles(name) VALUES('ROLE_ADMIN');
