@@ -23,3 +23,40 @@ In this project, only the backend of the system is going to be implemented, alth
 6) Run this query in the database.
   INSERT INTO ${DATABSE NAME}.roles(name) VALUES('ROLE_EMPLOYEE');
   INSERT INTO ${DATABSE NAME}.roles(name) VALUES('ROLE_ADMIN');
+
+## Employee Api's
+  ***************************************************************************************
+  POST
+  http://localhost:5000/api/auth/signup
+  
+  Request params:- 
+  {
+    "firstName": "Kaushik",
+    "lastName": "Samanta",
+    "dateOfBirth": "24-08-1994",
+    "hiringDate": "15-12-2016",
+    "province": "QUEBEC",
+    "postalCode": "H3H1P4",
+    "username" : "kaushik23",
+    "email": "kaushiksamanta23@gmail.com",
+    "password": "1234567890"
+  }
+  
+  Response:-
+  Employee registered successfully
+ 
+  ****************************************************************************************
+  POST
+  http://localhost:5000/api/auth/signin
+
+  Request params:- 
+  {
+   "usernameOrEmail" : "kaushik23",
+   "password" : "1234567890"
+  }
+  
+  Response:-
+   {
+     "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTQyNTg3NjI3LCJleHAiOjE1NDMxOTI0Mjd9.BJdY0zhkAZbEwhthAi9ddZBi8RaJ5dFQxsRySiWKFPlecolHIbqrmMnJiVDpiqg3YKeSvJyLe_ygxywNNMjwpg",
+      "tokenType": "Bearer"
+  }
