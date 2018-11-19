@@ -25,4 +25,4 @@
 /.nb-gradle/
 
 ### Project Configs ###
-/src/main/resources/*
+/src/main/resources/application.properties
