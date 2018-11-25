@@ -1,6 +1,8 @@
 package ca.concordia.soen6841.dbservice.model;
 
 import javax.persistence.*;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "JobApplicants")

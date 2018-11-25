@@ -1,7 +1,7 @@
 package ca.concordia.soen6841.dbservice.controller;
 
-import com.hrms.soen6841.dbservice.model.Employee;
-import com.hrms.soen6841.dbservice.repository.EmployeeRepository;
+import ca.concordia.soen6841.dbservice.model.Employee;
+import ca.concordia.soen6841.dbservice.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
