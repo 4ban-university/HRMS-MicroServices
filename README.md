@@ -33,10 +33,14 @@ mvn spring-boot:run
 ## Architecture
 
 Each service is a separate microservice.
-Eureka: server, all the other services register to it
+
+Eureka: server, all the other services register to it.
+
 Gateway: entry point for other services. Protects other routes and validates tokens.
-Auth: authentication server, used for signing up and issuing tokens
-Employee: employee service
+
+Auth: authentication server, used for signing up and issuing tokens.
+
+Employee: employee service.
 
 So, you should register with Auth first, request a token, and use it for every request for which you need to be authenticated.
 
