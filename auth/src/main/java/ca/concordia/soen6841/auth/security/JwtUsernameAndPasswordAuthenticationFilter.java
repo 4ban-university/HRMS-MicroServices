@@ -16,7 +16,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -33,10 +32,6 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
     public JwtUsernameAndPasswordAuthenticationFilter(AuthenticationManager authManager, JwtConfig jwtConfig) {
         this.authManager = authManager;
         this.jwtConfig = jwtConfig;
-
-        // By default, UsernamePasswordAuthenticationFilter listens to "/login" path.
-        // In our case, we use "/auth". So, we need to override the defaults.
-        this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(jwtConfig.getUri(), "POST"));
     }
 
     @Override

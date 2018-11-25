@@ -32,6 +32,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // allow all who are accessing "auth" service
                 .antMatchers(HttpMethod.POST, "/auth/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/auth/**").permitAll()
                 // must be an employee if trying to access the list of employees
                 .antMatchers("/employee/all/**").hasRole("EMPLOYEE")
                 // Any other request is allowed
