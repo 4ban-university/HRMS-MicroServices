@@ -65,11 +65,11 @@ Every request will hit the Gateway first, if need be, it will validate the token
  
   ****************************************************************************************
   POST
-  http://localhost:8762/auth/login
+  http://localhost:8762/auth
 
   Request params:- 
   {
-   "usernameOrEmail" : "kaushik23",
+   "username" : "kaushik23",
    "password" : "1234567890"
   }
   

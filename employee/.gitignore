@@ -23,6 +23,3 @@
 /dist/
 /nbdist/
 /.nb-gradle/
-
-### Project Configs ###
-/src/main/resources/application.properties
