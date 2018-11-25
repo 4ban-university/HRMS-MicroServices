@@ -69,7 +69,7 @@ Every request will hit the Gateway first, if need be, it will validate the token
  
   ****************************************************************************************
   POST
-  http://localhost:8762/auth
+  http://localhost:8762/auth/login
 
   Request params:- 
   {
