@@ -77,11 +77,7 @@ Every request will hit the Gateway first, if need be, it will validate the token
    "password" : "1234567890"
   }
   
-  Response:-
-   {
-     "accessToken": "A token that you should use later",
-     "tokenType": "Bearer"
-  }
+  To get the token, look at the Headers tab in Postman, take the value of the Bearer key.
 
   Later, when you need to authenticate for a service, use the token and put it in the "Authorization" tab of Postman, then select Bearer token as Type.
   
