@@ -46,7 +46,7 @@ So, you should register with Auth first, request a token, and use it for every r
 
 Every request will hit the Gateway first, if need be, it will validate the token and grant you access to the service.
 
-## Employee Api's
+## Auth Api's
   ***************************************************************************************
   POST
   http://localhost:8762/auth/signup
@@ -81,6 +81,88 @@ Every request will hit the Gateway first, if need be, it will validate the token
 
   Later, when you need to authenticate for a service, use the token and put it in the "Authorization" tab of Postman, then select Bearer token as Type.
   
+ ## Employee Api's
+ 
+  *****************************************************************************************
+  GET
+  http://localhost:8762/employee/
+  
+  Response:-
+  [
+    {
+        "createdAt": "2018-11-19T00:31:58.000+0000",
+        "updatedAt": "2018-11-19T00:31:58.000+0000",
+        "id": 1,
+        "firstName": "Kaushik",
+        "lastName": "Samanta",
+        "dateOfBirth": "24-08-1994",
+        "hiringDate": "15-12-2017",
+        "province": "QUEBEC",
+        "postalCode": "H3H1P4",
+        "username": "kaushik23",
+        "email": "kaushiksamanta23@gmail.com",
+        "password": "$2a$10$dWJThXJxkp69MYzfSmu.O.qWm7IomNIckZK5MSGNDivlSW7j5ppuq",
+        "roles": [
+            {
+                "id": 1,
+                "name": "ROLE_EMPLOYEE"
+            }
+        ],
+        "jobpostings": []
+    },
+    {
+        "createdAt": "2018-11-25T20:22:57.000+0000",
+        "updatedAt": "2018-11-25T20:22:57.000+0000",
+        "id": 2,
+        "firstName": "Kaushik",
+        "lastName": "Samanta",
+        "dateOfBirth": "24-08-1994",
+        "hiringDate": "15-12-2016",
+        "province": "QUEBEC",
+        "postalCode": "H3H1P4",
+        "username": "kaushik233",
+        "email": "kaushiksamanta233@gmail.com",
+        "password": "$2a$10$/i0rg7WxVZJC3cvQzKPZ4e2ZR0rjRa3iWKVujvcGHHEs179NOkefq",
+        "roles": [
+            {
+                "id": 1,
+                "name": "ROLE_EMPLOYEE"
+            }
+        ],
+        "jobpostings": []
+    }
+  ]
+  
+  ************************************************************************************************
+  GET
+  http://localhost:8762/employee/1
+  
+  Response:-
+  {
+    "createdAt": "2018-11-19T00:31:58.000+0000",
+    "updatedAt": "2018-11-19T00:31:58.000+0000",
+    "id": 1,
+    "firstName": "Kaushik",
+    "lastName": "Samanta",
+    "dateOfBirth": "24-08-1994",
+    "hiringDate": "15-12-2017",
+    "province": "QUEBEC",
+    "postalCode": "H3H1P4",
+    "username": "kaushik23",
+    "email": "kaushiksamanta23@gmail.com",
+    "password": "$2a$10$dWJThXJxkp69MYzfSmu.O.qWm7IomNIckZK5MSGNDivlSW7j5ppuq",
+    "roles": [
+        {
+            "id": 1,
+            "name": "ROLE_EMPLOYEE"
+        }
+    ],
+    "jobpostings": []
+  }
+ 
   ## Credits
   
   https://medium.com/omarelgabrys-blog/microservices-with-spring-boot-authentication-with-jwt-part-3-fafc9d7187e8 was used
+  
+  ## JSON To POJO Convertor
+  http://www.jsonschema2pojo.org/
