@@ -1,37 +1,38 @@
 package com.hrms.soen6841.employee.controller;
 
-import com.hrms.soen6841.employee.model.Employee;
-import com.hrms.soen6841.employee.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.hrms.soen6841.employee.pojo.Employee;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/")
 public class EmployeeController {
-    @Autowired
-    private EmployeeRepository employeeRepository;
 
-    @Autowired
-    private Environment env;
-
-    @RequestMapping("/")
-    public String home() {
-        // This is useful for debugging
-        // When having multiple instance of gallery service running at different ports.
-        // We load balance among them, and display which instance received the request.
-        return "Hello from Employee Service running at port: " + env.getProperty("local.server.port");
+    @GetMapping("/")
+    public List<Employee> getEmployeesList() {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List<Employee>> response = restTemplate.exchange(
+                "http://localhost:8700/employee/",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Employee>>(){});
+        List<Employee> employees = response.getBody();
+        return employees;
     }
 
-    /**
-     * Find all the employees
-     * @param pageable
-     * @return
-     */
-    @GetMapping("/all")
-    public Page<Employee> getEmployee(Pageable pageable) {
-        return employeeRepository.findAll(pageable);
+    @GetMapping("/{id}")
+    public Employee getEmployee(@PathVariable Long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Employee> response = restTemplate.exchange(
+                "http://localhost:8700/employee/" + id,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Employee>(){});
+        Employee employee = response.getBody();
+        return employee;
     }
 }
