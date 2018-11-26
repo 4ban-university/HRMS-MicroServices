@@ -1,59 +1,45 @@
-package com.hrms.soen6841.employee.model;
+package com.hrms.soen6841.employee.pojo;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-@Entity
-@Table(name = "Employee")
-public class Employee extends AuditModel{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+public class Employee {
 
-    @Column(name = "first_name")
+    private String createdAt;
+    private String updatedAt;
+    private Integer id;
     private String firstName;
-
-    @Column(name = "last_name")
     private String lastName;
-
-    @Column(name = "date_of_birth")
     private String dateOfBirth;
-
-    @Column(name = "hiring_date")
     private String hiringDate;
-
-    @Column(name = "province")
     private String province;
-
-    @Column(name = "postal_code")
     private String postalCode;
-
-    @Column(name = "username")
     private String username;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name = "password")
     private String password;
+    private List<Role> roles = null;
+    private List<Object> jobpostings = null;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "Employee_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
-
-    public Employee() {
-
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public Long getId() {
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -105,9 +91,13 @@ public class Employee extends AuditModel{
         this.postalCode = postalCode;
     }
 
-    public String getUsername() { return username; }
+    public String getUsername() {
+        return username;
+    }
 
-    public void setUsername(String username) { this.username = username; }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getEmail() {
         return email;
@@ -125,11 +115,19 @@ public class Employee extends AuditModel{
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Object> getJobpostings() {
+        return jobpostings;
+    }
+
+    public void setJobpostings(List<Object> jobpostings) {
+        this.jobpostings = jobpostings;
     }
 }
