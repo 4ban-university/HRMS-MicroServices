@@ -11,7 +11,7 @@ public class Invoice extends AuditModel {
     private Integer id;
 
     @Column(name = "salary_after_tax")
-    private Number salaryAfterTax;
+    private Integer salaryAfterTax;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
@@ -29,6 +29,30 @@ public class Invoice extends AuditModel {
 
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getSalaryAfterTax() {
+        return salaryAfterTax;
+    }
+
+    public void setSalaryAfterTax(Integer salaryAfterTax) {
+        this.salaryAfterTax = salaryAfterTax;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
     public Tax getTax() {
         return tax;
     }
@@ -43,29 +67,5 @@ public class Invoice extends AuditModel {
 
     public void setSalary(Salary salary) {
         this.salary = salary;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Number getSalaryAfterTax() {
-        return salaryAfterTax;
-    }
-
-    public void setSalaryAfterTax(Number salaryAfterTax) {
-        this.salaryAfterTax = salaryAfterTax;
     }
 }

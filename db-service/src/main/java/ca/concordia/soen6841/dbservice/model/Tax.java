@@ -8,39 +8,65 @@ public class Tax extends AuditModel {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
-    @Lob
-    @Column(name = "tax_brackets")
-    private String taxBrackets;
+    @Column(name = "tax_bracket_min")
+    private Integer taxBracketMin;
+
+    @Column(name = "tax_bracket_max")
+    private Integer taxBracketMax;
 
     @Column(name = "province")
     private String province;
 
     @Column(name = "province_tax")
-    private Number provinceTax;
+    private Integer provinceTax;
 
     @Column(name = "federal_tax")
-    private Number federalTax;
+    private Integer federalTax;
 
     public Tax() {
 
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getTaxBrackets() {
-        return taxBrackets;
+    public void setProvinceTax(Integer provinceTax) {
+        this.provinceTax = provinceTax;
     }
 
-    public void setTaxBrackets(String taxBrackets) {
-        this.taxBrackets = taxBrackets;
+    public Integer getProvinceTax() {
+        return provinceTax;
+    }
+
+    public Integer getFederalTax() {
+        return federalTax;
+    }
+
+    public void setFederalTax(Integer federalTax) {
+        this.federalTax = federalTax;
+    }
+
+    public Integer getTaxBracketMin() {
+        return taxBracketMin;
+    }
+
+    public void setTaxBracketMin(Integer taxBracketMin) {
+        this.taxBracketMin = taxBracketMin;
+    }
+
+    public Integer getTaxBracketMax() {
+        return taxBracketMax;
+    }
+
+    public void setTaxBracketMax(Integer taxBracketMax) {
+        this.taxBracketMax = taxBracketMax;
     }
 
     public String getProvince() {
@@ -51,19 +77,4 @@ public class Tax extends AuditModel {
         this.province = province;
     }
 
-    public Number getProvinceTax() {
-        return provinceTax;
-    }
-
-    public void setProvinceTax(Number provinceTax) {
-        this.provinceTax = provinceTax;
-    }
-
-    public Number getFederalTax() {
-        return federalTax;
-    }
-
-    public void setFederalTax(Number federalTax) {
-        this.federalTax = federalTax;
-    }
 }

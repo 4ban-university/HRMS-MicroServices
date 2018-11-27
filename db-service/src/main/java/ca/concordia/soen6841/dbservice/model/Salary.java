@@ -8,13 +8,13 @@ public class Salary extends AuditModel {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "salary_amount")
-    private Number salaryAmount;
+    private Integer salaryAmount;
 
     @Column(name = "bonus")
-    private Number bonus;
+    private Integer bonus;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
@@ -32,27 +32,27 @@ public class Salary extends AuditModel {
         this.employee = employee;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Number getSalaryAmount() {
+    public Integer getSalaryAmount() {
         return salaryAmount;
     }
 
-    public void setSalaryAmount(Number salaryAmount) {
+    public void setSalaryAmount(Integer salaryAmount) {
         this.salaryAmount = salaryAmount;
     }
 
-    public Number getBonus() {
+    public Integer getBonus() {
         return bonus;
     }
 
-    public void setBonus(Number bonus) {
+    public void setBonus(Integer bonus) {
         this.bonus = bonus;
     }
 }
