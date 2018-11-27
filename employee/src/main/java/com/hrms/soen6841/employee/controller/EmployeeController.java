@@ -2,6 +2,7 @@ package com.hrms.soen6841.employee.controller;
 
 import com.hrms.soen6841.employee.pojo.Employee;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,5 +35,28 @@ public class EmployeeController {
                 new ParameterizedTypeReference<Employee>(){});
         Employee employee = response.getBody();
         return employee;
+    }
+
+    @PutMapping("/{id}")
+    public Employee editEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Employee> response = restTemplate.exchange(
+                "http://localhost:8700/employee/" + id,
+                HttpMethod.PUT,
+                new HttpEntity<>(newEmployee),
+                new ParameterizedTypeReference<Employee>(){});
+        Employee employee = response.getBody();
+        return employee;
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteEmployee(@PathVariable Long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.exchange(
+                "http://localhost:8700/employee/" + id,
+                HttpMethod.DELETE,
+                null,
+                String.class);
+        return "Employee deleted successfully";
     }
 }
