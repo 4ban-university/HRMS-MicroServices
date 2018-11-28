@@ -24,6 +24,7 @@ import com.hrms.soen6841.recruitment.pojo.JobPostings;
 @RequestMapping("/")
 public class JobPostingsController {
 	
+	// Get all posted jobs
 	@GetMapping("/getjobs")
 	public List<JobPostings> getJobPostingsList() {
 		 RestTemplate restTemplate = new RestTemplate();
@@ -36,6 +37,7 @@ public class JobPostingsController {
 	        return jobPostings;
 	}
 	
+	// Get job by id
 	@GetMapping("/getjobs/{id}")
 	public JobPostings getJobPostingsByStatus(@PathVariable Integer id) {
 		 RestTemplate restTemplate = new RestTemplate();
@@ -48,6 +50,20 @@ public class JobPostingsController {
 	        return jobPostings;
 	}
 	
+	// Get job by status
+	@GetMapping("/getjobs/status/{status}")
+	public List<JobPostings> getJobPostingsByStatus(@PathVariable String status) {
+		 RestTemplate restTemplate = new RestTemplate();
+	        ResponseEntity<List<JobPostings>> response = restTemplate.exchange(
+	                "http://localhost:8700/jobpostings/status/" + status,
+	                HttpMethod.GET,
+	                null,
+	                new ParameterizedTypeReference<List<JobPostings>>(){});
+	        List<JobPostings> jobPostings = response.getBody();
+	        return jobPostings;
+	}
+	
+	// Post a job
 	@PostMapping("/postjob")
 	public String postJob(@Valid @RequestBody JobPostings jobPosting) {
         RestTemplate restTemplate = new RestTemplate();
@@ -60,7 +76,7 @@ public class JobPostingsController {
 		
 	}
 	
-	// delete a job
+	// Delete a job
 	@DeleteMapping("deletejob/{id}")
 	public String deleteJobPost(@PathVariable Integer id) {
 		RestTemplate restTemplate = new RestTemplate();
@@ -71,7 +87,7 @@ public class JobPostingsController {
 		return "Job post deleted successfully";   // return a message to postman as notification
 	}
 	
-	// edit the job post
+	// Edit the job post
     @PutMapping("editjob/{id}")  // pass in the entire object inorder to edit based of the Id
     public JobPostings editEmployee(@RequestBody JobPostings jobPost, @PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();

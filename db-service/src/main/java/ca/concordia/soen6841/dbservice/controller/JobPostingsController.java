@@ -28,15 +28,23 @@ public class JobPostingsController {
 	@Autowired
 	private JobPostingsRepository jobPostingsRepository;
 
+	// Get all posted jobs
 	@GetMapping("/")
 	public List<JobPostings> getJobsPosting() {
 		return jobPostingsRepository.findAll();
 	}
 	
+	// Get job by id
 	@GetMapping("/{id}")
 	public JobPostings getJobsPostingById(@PathVariable Integer id) {
 		return jobPostingsRepository.findById(id)
 				.orElseThrow(() -> new JobPostingsNotFoundException(id));
+	}
+	
+	// Get jobs by status
+	@GetMapping("/status/{status}")
+	public List<JobPostings> getJobsPostingBystatus(@PathVariable String status) {
+		return jobPostingsRepository.findJobByStatus(status);
 	}
 
 	// Delete Job Post
