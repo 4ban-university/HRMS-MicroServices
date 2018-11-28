@@ -1,6 +1,7 @@
 package ca.concordia.soen6841.dbservice.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ca.concordia.soen6841.dbservice.exceptions.JobPostingsNotFoundException;
 import ca.concordia.soen6841.dbservice.model.JobPostings;
 import ca.concordia.soen6841.dbservice.payloads.JobPostingRequest;
 import ca.concordia.soen6841.dbservice.repository.JobPostingsRepository;
@@ -29,6 +31,12 @@ public class JobPostingsController {
 	@GetMapping("/")
 	public List<JobPostings> getJobsPosting() {
 		return jobPostingsRepository.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public JobPostings getJobsPostingById(@PathVariable Integer id) {
+		return jobPostingsRepository.findById(id)
+				.orElseThrow(() -> new JobPostingsNotFoundException(id));
 	}
 
 	// Delete Job Post

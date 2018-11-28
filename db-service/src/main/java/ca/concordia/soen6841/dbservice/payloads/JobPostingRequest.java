@@ -5,10 +5,10 @@ import javax.validation.constraints.NotEmpty;
 
 public class JobPostingRequest {
 
-	@NotEmpty
+	//@NotEmpty
 	private Number minSalary;
 
-	@NotEmpty
+	//@NotEmpty
 	private Number maxSalary;
 
 	@NotBlank
@@ -23,7 +23,7 @@ public class JobPostingRequest {
 	@NotBlank
 	private String contractType;
 
-	@NotEmpty
+	//@NotEmpty
 	private Number contractPeriod;
 
 	public Number getMinSalary() {

@@ -36,6 +36,18 @@ public class JobPostingsController {
 	        return jobPostings;
 	}
 	
+	@GetMapping("/getjobs/{id}")
+	public JobPostings getJobPostingsByStatus(@PathVariable Integer id) {
+		 RestTemplate restTemplate = new RestTemplate();
+	        ResponseEntity<JobPostings> response = restTemplate.exchange(
+	                "http://localhost:8700/jobpostings/" + id,
+	                HttpMethod.GET,
+	                null,
+	                new ParameterizedTypeReference<JobPostings>(){});
+	        JobPostings jobPostings = response.getBody();
+	        return jobPostings;
+	}
+	
 	@PostMapping("/postjob")
 	public String postJob(@Valid @RequestBody JobPostings jobPosting) {
         RestTemplate restTemplate = new RestTemplate();
