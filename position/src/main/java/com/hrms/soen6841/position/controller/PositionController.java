@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import java.util.List;
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping("/")
@@ -26,7 +28,7 @@ public class PositionController {
     }
 
     @GetMapping("/{id}")
-    public Position getPosition(@PathVariable Long id) {
+    public Position getPosition(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Position> response = restTemplate.exchange(
                 "http://localhost:8700/position/" + id,
@@ -38,7 +40,7 @@ public class PositionController {
     }
 
     @PutMapping("/{id}")
-    public Position editPosition(@RequestBody Position newPosition, @PathVariable Long id) {
+    public Position editPosition(@RequestBody Position newPosition, @PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Position> response = restTemplate.exchange(
                 "http://localhost:8700/position/" + id,
@@ -50,7 +52,7 @@ public class PositionController {
     }
 
     @DeleteMapping("/{id}")
-    public String deletePosition(@PathVariable Long id) {
+    public String deletePosition(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.exchange(
                 "http://localhost:8700/position/" + id,
