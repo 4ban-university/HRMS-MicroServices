@@ -46,6 +46,13 @@ public class JobPostingsController {
 	public List<JobPostings> getJobsPostingBystatus(@PathVariable String status) {
 		return jobPostingsRepository.findJobByStatus(status);
 	}
+	
+	//Get jobs by description
+	@GetMapping("/description/{description}")
+	public List<JobPostings>getJobPostingByDesc(@PathVariable String description){
+		return jobPostingsRepository.findJobByDesc(description);
+		
+	}
 
 	// Delete Job Post
 	@DeleteMapping("/{id}")

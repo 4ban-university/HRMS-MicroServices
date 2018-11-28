@@ -27,4 +27,13 @@ public class JobPostingsCustomRepositoryImpl implements JobPostingsCustomReposit
         return query.getResultList();
 	}
 
+	@Override
+	public List<JobPostings> findJobByDesc(String description) {
+		
+		Query query = entityManager.createNativeQuery("SELECT jp.* FROM hrms.job_postings as jp "+
+				"WHERE jp.job_description LIKE ?", JobPostings.class);
+		query.setParameter(1, "%" + description + "%");
+		return query.getResultList();
+	}
+
 }
