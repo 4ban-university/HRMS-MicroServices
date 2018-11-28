@@ -8,7 +8,9 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +35,17 @@ public class JobPostingsController {
 	        return jobPostings;
 	}
 	
+	// delete a job
+	@DeleteMapping("deletejob/{id}")
+	public String deleteJobPost(@PathVariable Integer id) {
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.exchange( "http://localhost:8700/jobposting/" + id,
+				HttpMethod.DELETE,
+				null,
+				String.class);
+		return "Job post deleted successfully";   // return a message to postman as notification
+	}
+
 	@PostMapping("/postjob")
 	public String postJob(@Valid @RequestBody JobPostings jobPosting) {
         RestTemplate restTemplate = new RestTemplate();
@@ -44,6 +57,6 @@ public class JobPostingsController {
         return "Job posted successfully";
 		
 	}
-
+	
 
 }

@@ -7,7 +7,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,18 +22,26 @@ import ca.concordia.soen6841.dbservice.repository.JobPostingsRepository;
 @RestController
 @RequestMapping("/jobpostings")
 public class JobPostingsController {
-	
+
 	@Autowired
 	private JobPostingsRepository jobPostingsRepository;
-	
+
 	@GetMapping("/")
 	public List<JobPostings> getJobsPosting() {
 		return jobPostingsRepository.findAll();
 	}
 
+	// Delete Job Post
+	@DeleteMapping("/{id}")
+	public String deleteEmployee(@PathVariable Integer id) {
+		jobPostingsRepository.deleteById(id);
+		return "Job post deleted successfully";
+	}
+
+
 	@PostMapping("/postjob")
 	public ResponseEntity<?> postJob(@Valid @RequestBody JobPostingRequest jobPostingRequest) {
-	
+
 		JobPostings jobPosting = new JobPostings();
 		jobPosting.setMinSalary(jobPostingRequest.getMinSalary());
 		jobPosting.setMaxSalary(jobPostingRequest.getMaxSalary());
@@ -40,11 +50,13 @@ public class JobPostingsController {
 		jobPosting.setNoOfOpenings(jobPostingRequest.getNoOfOpenings());
 		jobPosting.setContractType(jobPostingRequest.getContractType());
 		jobPosting.setContractPeriod(jobPostingRequest.getContractPeriod());
-		
+
 		jobPostingsRepository.save(jobPosting);
-	
+
 		return ResponseEntity.status(HttpStatus.OK)
-                .body("job posted successfully");
+				.body("job posted successfully");
 	}
-	
+
+
+
 }
