@@ -10,15 +10,6 @@ public class Position {
     private String departmentName;
     private Date startDate;
     private Date endDate;
-    private Employee employee;
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
 
     public Integer getId() {
         return id;
