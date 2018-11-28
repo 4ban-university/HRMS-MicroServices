@@ -1,4 +1,4 @@
-package com.hrms.soen6841;
+package com.hrms.soen6841.recruitment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
