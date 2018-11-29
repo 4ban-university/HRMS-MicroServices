@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TaxRepository extends JpaRepository<Tax, Long> {
-    @Query("SELECT t FROM Tax t WHERE t.province = province AND (salary BETWEEN t.taxBracketMin AND t.taxBracketMax)")
-    public Tax findByProvinceAndSalary(@Param("province") String province, @Param("salary") Integer salary);
+    @Query(value = "SELECT * FROM hrms.tax WHERE province = ?1 AND  tax_bracket_min <= ?2 AND tax_bracket_max >= ?2", nativeQuery = true)
+    public Tax findByProvinceAndSalary(String province, Long salaryAmount);
 }

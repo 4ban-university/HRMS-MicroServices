@@ -2,9 +2,12 @@ package ca.concordia.soen6841.dbservice.controller;
 
 import ca.concordia.soen6841.dbservice.exceptions.EmployeeNotFoundException;
 import ca.concordia.soen6841.dbservice.model.Employee;
-import ca.concordia.soen6841.dbservice.model.Salary;
+import ca.concordia.soen6841.dbservice.model.Invoice;
+import ca.concordia.soen6841.dbservice.model.Tax;
+import ca.concordia.soen6841.dbservice.pojo.Response;
+import ca.concordia.soen6841.dbservice.pojo.Salary;
 import ca.concordia.soen6841.dbservice.repository.EmployeeRepository;
-import ca.concordia.soen6841.dbservice.repository.SalaryRepository;
+import ca.concordia.soen6841.dbservice.repository.InvoiceRepository;
 import ca.concordia.soen6841.dbservice.repository.TaxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,15 +19,19 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    @Autowired
-    private SalaryRepository salaryRepository;
 
     @Autowired
     private TaxRepository taxRepository;
 
+    @Autowired
+    private InvoiceRepository invoiceRepository;
+
     @GetMapping("/")
-    public List<Employee> getEmployee() {
-        return employeeRepository.findAll();
+    public Response<List<Employee>> getEmployee() {
+        Response<List<Employee>> response = new Response<>();
+        response.setMessage("List of employees");
+        response.setData(employeeRepository.findAll());
+        return response;
     }
 
     @GetMapping("/{id}")
@@ -60,17 +67,27 @@ public class EmployeeController {
 
     @PostMapping("/salary/{employeeId}")
     public String addSalary(@RequestBody Salary newSalary, @PathVariable Long employeeId) {
-        Employee employee = employeeRepository.findById(employeeId)
-                .orElseThrow(() -> new EmployeeNotFoundException(employeeId));
-        Salary salary = new Salary();
-        salary.setSalaryAmount(newSalary.getSalaryAmount());
-        salary.setBonus(newSalary.getBonus());
-        salary.setEmployee(employee);
-        salaryRepository.save(salary);
-        taxRepository.findByProvinceAndSalary(employee.getProvince(), salary.getSalaryAmount());
-        /**
-         * Calculation logic here
-         */
-        return "";
+        employeeRepository.findById(employeeId)
+                .map(employee -> {
+                    employee.setSalary(newSalary.getSalary());
+                    employee.setBonus(newSalary.getBonus());
+                    return employeeRepository.save(employee);
+                });
+        return "Salary added successfully";
+    }
+
+    @GetMapping("/invoice/{id}")
+    public Invoice generateInvoice(@PathVariable Long id) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(id));
+        Tax tax = taxRepository.findByProvinceAndSalary(employee.getProvince(), employee.getSalary());
+        Long totalSalary = ( employee.getSalary() ) - (employee.getSalary() * tax.getFederalTax() / 100 ) +
+                ( employee.getSalary() * tax.getProvinceTax() / 100 ) +
+                ( employee.getBonus());
+        Invoice invoice =  new Invoice();
+        invoice.setSalaryAfterTax(totalSalary);
+        invoice.setEmployee(employee);
+        invoice.setTax(tax);
+        return invoiceRepository.save(invoice);
     }
 }

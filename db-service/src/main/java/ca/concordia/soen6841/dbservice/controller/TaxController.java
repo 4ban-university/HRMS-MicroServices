@@ -4,20 +4,21 @@ import ca.concordia.soen6841.dbservice.model.Tax;
 import ca.concordia.soen6841.dbservice.repository.TaxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/payroll")
-public class PayrollController {
+@RequestMapping("/tax")
+public class TaxController {
     @Autowired
     private TaxRepository taxRepository;
 
-    @GetMapping("/tax")
+    @GetMapping("/")
     public List<Tax> getTax() {
         return taxRepository.findAll();
     }
 
-    @PostMapping("/tax")
+    @PostMapping("/")
     public Tax addTax(@RequestBody Tax newTax) {
         Tax tax = new Tax();
         tax.setTaxBracketMin(newTax.getTaxBracketMin());
@@ -28,7 +29,7 @@ public class PayrollController {
         return taxRepository.save(tax);
     }
 
-    @PutMapping("/tax/{id}")
+    @PutMapping("/{id}")
     public Tax editTax(@RequestBody Tax newTax, @PathVariable Long id) {
         return taxRepository.findById(id)
                 .map(tax -> {
@@ -45,7 +46,7 @@ public class PayrollController {
                 });
     }
 
-    @DeleteMapping("/tax/{id}")
+    @DeleteMapping("/{id}")
     public String deleteTax(@PathVariable Long id) {
         taxRepository.deleteById(id);
         return "Tax deleted successfully";

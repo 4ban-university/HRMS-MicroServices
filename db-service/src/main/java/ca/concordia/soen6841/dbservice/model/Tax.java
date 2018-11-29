@@ -11,19 +11,19 @@ public class Tax extends AuditModel {
     private Long id;
 
     @Column(name = "tax_bracket_min")
-    private Integer taxBracketMin;
+    private Long taxBracketMin;
 
     @Column(name = "tax_bracket_max")
-    private Integer taxBracketMax;
+    private Long taxBracketMax;
 
     @Column(name = "province")
     private String province;
 
     @Column(name = "province_tax")
-    private Integer provinceTax;
+    private Long provinceTax;
 
     @Column(name = "federal_tax")
-    private Integer federalTax;
+    private Long federalTax;
 
     public Tax() {
 
@@ -37,35 +37,19 @@ public class Tax extends AuditModel {
         this.id = id;
     }
 
-    public void setProvinceTax(Integer provinceTax) {
-        this.provinceTax = provinceTax;
-    }
-
-    public Integer getProvinceTax() {
-        return provinceTax;
-    }
-
-    public Integer getFederalTax() {
-        return federalTax;
-    }
-
-    public void setFederalTax(Integer federalTax) {
-        this.federalTax = federalTax;
-    }
-
-    public Integer getTaxBracketMin() {
+    public Long getTaxBracketMin() {
         return taxBracketMin;
     }
 
-    public void setTaxBracketMin(Integer taxBracketMin) {
+    public void setTaxBracketMin(Long taxBracketMin) {
         this.taxBracketMin = taxBracketMin;
     }
 
-    public Integer getTaxBracketMax() {
+    public Long getTaxBracketMax() {
         return taxBracketMax;
     }
 
-    public void setTaxBracketMax(Integer taxBracketMax) {
+    public void setTaxBracketMax(Long taxBracketMax) {
         this.taxBracketMax = taxBracketMax;
     }
 
@@ -77,4 +61,19 @@ public class Tax extends AuditModel {
         this.province = province;
     }
 
+    public Long getProvinceTax() {
+        return provinceTax;
+    }
+
+    public void setProvinceTax(Long provinceTax) {
+        this.provinceTax = provinceTax;
+    }
+
+    public Long getFederalTax() {
+        return federalTax;
+    }
+
+    public void setFederalTax(Long federalTax) {
+        this.federalTax = federalTax;
+    }
 }

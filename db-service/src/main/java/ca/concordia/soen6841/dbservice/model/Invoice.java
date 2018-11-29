@@ -8,10 +8,10 @@ public class Invoice extends AuditModel {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "salary_after_tax")
-    private Integer salaryAfterTax;
+    private Long salaryAfterTax;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
@@ -21,27 +21,24 @@ public class Invoice extends AuditModel {
     @JoinColumn(name = "tax_id", nullable = false)
     private Tax tax;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "salary_id", nullable = false)
-    private Salary salary;
 
     public Invoice() {
 
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getSalaryAfterTax() {
+    public Long getSalaryAfterTax() {
         return salaryAfterTax;
     }
 
-    public void setSalaryAfterTax(Integer salaryAfterTax) {
+    public void setSalaryAfterTax(Long salaryAfterTax) {
         this.salaryAfterTax = salaryAfterTax;
     }
 
@@ -59,13 +56,5 @@ public class Invoice extends AuditModel {
 
     public void setTax(Tax tax) {
         this.tax = tax;
-    }
-
-    public Salary getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Salary salary) {
-        this.salary = salary;
     }
 }

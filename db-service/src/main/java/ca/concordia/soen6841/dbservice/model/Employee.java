@@ -39,6 +39,12 @@ public class Employee extends AuditModel{
     @Column(name = "password")
     private String password;
 
+    @Column (name = "salary")
+    private Long salary;
+
+    @Column (name = "bonus")
+    private Long bonus;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Employee_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -146,4 +152,12 @@ public class Employee extends AuditModel{
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+    public Long getSalary() {return salary; }
+
+    public void setSalary(Long salary) { this.salary = salary; }
+
+    public Long getBonus() { return bonus; }
+
+    public void setBonus(Long bonus) { this.bonus = bonus; }
 }
