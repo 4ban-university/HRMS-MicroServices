@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface InvoiceRepository extends JpaRepository<Invoice, Integer>{
     @Query(value = "SELECT * FROM hrms.invoice WHERE employee_id = ?1;", nativeQuery = true)
-    public Invoice findInvoiceByEmployeeId(Integer id);
+    public List<Invoice> findInvoiceByEmployeeId(Integer id);
 }

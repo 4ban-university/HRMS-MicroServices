@@ -1,5 +1,7 @@
 package ca.concordia.soen6841.dbservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,10 +15,12 @@ public class Invoice extends AuditModel {
     @Column(name = "salary_after_tax")
     private Long salaryAfterTax;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tax_id", nullable = false)
     private Tax tax;

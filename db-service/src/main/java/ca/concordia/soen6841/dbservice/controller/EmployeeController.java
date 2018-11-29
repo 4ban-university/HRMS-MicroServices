@@ -4,7 +4,6 @@ import ca.concordia.soen6841.dbservice.exceptions.EmployeeNotFoundException;
 import ca.concordia.soen6841.dbservice.model.Employee;
 import ca.concordia.soen6841.dbservice.model.Invoice;
 import ca.concordia.soen6841.dbservice.model.Tax;
-import ca.concordia.soen6841.dbservice.pojo.Response;
 import ca.concordia.soen6841.dbservice.pojo.Salary;
 import ca.concordia.soen6841.dbservice.repository.EmployeeRepository;
 import ca.concordia.soen6841.dbservice.repository.InvoiceRepository;
@@ -27,11 +26,8 @@ public class EmployeeController {
     private InvoiceRepository invoiceRepository;
 
     @GetMapping("/")
-    public Response<List<Employee>> getEmployee() {
-        Response<List<Employee>> response = new Response<>();
-        response.setMessage("List of employees");
-        response.setData(employeeRepository.findAll());
-        return response;
+    public List<Employee> getEmployee() {
+        return employeeRepository.findAll();
     }
 
     @GetMapping("/{id}")
