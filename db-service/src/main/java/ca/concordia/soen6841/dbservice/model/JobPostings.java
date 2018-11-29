@@ -11,10 +11,10 @@ public class JobPostings extends AuditModel {
     private Integer id;
 
     @Column(name = "min_salary")
-    private Number minSalary;
+    private Integer minSalary;
 
     @Column(name = "max_salary")
-    private Number maxSalary;
+    private Integer maxSalary;
 
     @Column(name = "application_status")
     private String applicationStatus;
@@ -29,7 +29,7 @@ public class JobPostings extends AuditModel {
     private String contractType;
 
     @Column(name = "contract_period")
-    private Number contractPeriod;
+    private Integer contractPeriod;
 
     public JobPostings() {
 
@@ -43,19 +43,19 @@ public class JobPostings extends AuditModel {
         this.id = id;
     }
 
-    public Number getMinSalary() {
+    public Integer getMinSalary() {
         return minSalary;
     }
 
-    public void setMinSalary(Number minSalary) {
+    public void setMinSalary(Integer minSalary) {
         this.minSalary = minSalary;
     }
 
-    public Number getMaxSalary() {
+    public Integer getMaxSalary() {
         return maxSalary;
     }
 
-    public void setMaxSalary(Number maxSalary) {
+    public void setMaxSalary(Integer maxSalary) {
         this.maxSalary = maxSalary;
     }
 
@@ -91,11 +91,11 @@ public class JobPostings extends AuditModel {
         this.contractType = contractType;
     }
 
-    public Number getContractPeriod() {
+    public Integer getContractPeriod() {
         return contractPeriod;
     }
 
-    public void setContractPeriod(Number contractPeriod) {
+    public void setContractPeriod(Integer contractPeriod) {
         this.contractPeriod = contractPeriod;
     }
 }

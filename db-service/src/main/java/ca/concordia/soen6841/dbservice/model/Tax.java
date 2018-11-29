@@ -8,39 +8,49 @@ public class Tax extends AuditModel {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
-    @Lob
-    @Column(name = "tax_brackets")
-    private String taxBrackets;
+    @Column(name = "tax_bracket_min")
+    private Long taxBracketMin;
+
+    @Column(name = "tax_bracket_max")
+    private Long taxBracketMax;
 
     @Column(name = "province")
     private String province;
 
     @Column(name = "province_tax")
-    private Number provinceTax;
+    private Long provinceTax;
 
     @Column(name = "federal_tax")
-    private Number federalTax;
+    private Long federalTax;
 
     public Tax() {
 
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getTaxBrackets() {
-        return taxBrackets;
+    public Long getTaxBracketMin() {
+        return taxBracketMin;
     }
 
-    public void setTaxBrackets(String taxBrackets) {
-        this.taxBrackets = taxBrackets;
+    public void setTaxBracketMin(Long taxBracketMin) {
+        this.taxBracketMin = taxBracketMin;
+    }
+
+    public Long getTaxBracketMax() {
+        return taxBracketMax;
+    }
+
+    public void setTaxBracketMax(Long taxBracketMax) {
+        this.taxBracketMax = taxBracketMax;
     }
 
     public String getProvince() {
@@ -51,19 +61,19 @@ public class Tax extends AuditModel {
         this.province = province;
     }
 
-    public Number getProvinceTax() {
+    public Long getProvinceTax() {
         return provinceTax;
     }
 
-    public void setProvinceTax(Number provinceTax) {
+    public void setProvinceTax(Long provinceTax) {
         this.provinceTax = provinceTax;
     }
 
-    public Number getFederalTax() {
+    public Long getFederalTax() {
         return federalTax;
     }
 
-    public void setFederalTax(Number federalTax) {
+    public void setFederalTax(Long federalTax) {
         this.federalTax = federalTax;
     }
 }

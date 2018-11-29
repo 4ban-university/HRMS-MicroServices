@@ -1,5 +1,7 @@
 package ca.concordia.soen6841.dbservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,41 +10,40 @@ public class Invoice extends AuditModel {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "salary_after_tax")
-    private Number salaryAfterTax;
+    private Long salaryAfterTax;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tax_id", nullable = false)
     private Tax tax;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "salary_id", nullable = false)
-    private Salary salary;
 
     public Invoice() {
 
     }
 
-    public Tax getTax() {
-        return tax;
+    public Long getId() {
+        return id;
     }
 
-    public void setTax(Tax tax) {
-        this.tax = tax;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Salary getSalary() {
-        return salary;
+    public Long getSalaryAfterTax() {
+        return salaryAfterTax;
     }
 
-    public void setSalary(Salary salary) {
-        this.salary = salary;
+    public void setSalaryAfterTax(Long salaryAfterTax) {
+        this.salaryAfterTax = salaryAfterTax;
     }
 
     public Employee getEmployee() {
@@ -53,19 +54,11 @@ public class Invoice extends AuditModel {
         this.employee = employee;
     }
 
-    public Integer getId() {
-        return id;
+    public Tax getTax() {
+        return tax;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Number getSalaryAfterTax() {
-        return salaryAfterTax;
-    }
-
-    public void setSalaryAfterTax(Number salaryAfterTax) {
-        this.salaryAfterTax = salaryAfterTax;
+    public void setTax(Tax tax) {
+        this.tax = tax;
     }
 }
