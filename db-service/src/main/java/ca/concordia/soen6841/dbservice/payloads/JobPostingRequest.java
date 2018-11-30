@@ -24,7 +24,7 @@ public class JobPostingRequest {
 	private String contractType;
 
 	//@NotEmpty
-	private Number contractPeriod;
+	private Integer contractPeriod;
 
 	public Number getMinSalary() {
 		return minSalary;
@@ -74,11 +74,11 @@ public class JobPostingRequest {
 		this.contractType = contractType;
 	}
 
-	public Number getContractPeriod() {
+	public Integer getContractPeriod() {
 		return contractPeriod;
 	}
 
-	public void setContractPeriod(Number contractPeriod) {
+	public void setContractPeriod(Integer contractPeriod) {
 		this.contractPeriod = contractPeriod;
 	}
 

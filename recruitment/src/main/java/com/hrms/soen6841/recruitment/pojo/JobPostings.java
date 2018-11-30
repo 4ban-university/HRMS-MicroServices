@@ -16,7 +16,7 @@ public class JobPostings {
 
 	private String contractType;
 
-	private Number contractPeriod;
+	private Integer contractPeriod;
 
 	public JobPostings() {
 
@@ -78,11 +78,11 @@ public class JobPostings {
 		this.contractType = contractType;
 	}
 
-	public Number getContractPeriod() {
+	public Integer getContractPeriod() {
 		return contractPeriod;
 	}
 
-	public void setContractPeriod(Number contractPeriod) {
+	public void setContractPeriod(Integer contractPeriod) {
 		this.contractPeriod = contractPeriod;
 	}
 }
