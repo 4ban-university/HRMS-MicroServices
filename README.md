@@ -21,8 +21,7 @@ In this project, only the backend of the system is going to be implemented, alth
     /src/main/resources/application.properties file according to your own system configurations.
 5) mvn spring-boot:run
 6) Run this query in the database.
-  INSERT INTO ${DATABASE NAME}.roles(name) VALUES('ROLE_EMPLOYEE');
-  INSERT INTO ${DATABASE NAME}.roles(name) VALUES('ROLE_ADMIN');
+
   
 ## Running
 

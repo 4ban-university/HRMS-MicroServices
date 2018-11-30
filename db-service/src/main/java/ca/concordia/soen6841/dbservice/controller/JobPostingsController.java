@@ -61,23 +61,23 @@ public class JobPostingsController {
 	}
 
 
-//	@PostMapping("/postjob")
-//	public ResponseEntity<?> postJob(@Valid @RequestBody JobPostingRequest jobPostingRequest) {
-//
-//		JobPostings jobPosting = new JobPostings();
-//		jobPosting.setMinSalary(jobPostingRequest.getMinSalary());
-//		jobPosting.setMaxSalary(jobPostingRequest.getMaxSalary());
-//		jobPosting.setApplicationStatus(jobPostingRequest.getApplicationStatus());
-//		jobPosting.setJobDescription(jobPostingRequest.getJobDescription());
-//		jobPosting.setNoOfOpenings(jobPostingRequest.getNoOfOpenings());
-//		jobPosting.setContractType(jobPostingRequest.getContractType());
-//		jobPosting.setContractPeriod(jobPostingRequest.getContractPeriod());
-//
-//		jobPostingsRepository.save(jobPosting);
-//
-//		return ResponseEntity.status(HttpStatus.OK)
-//				.body("job posted successfully");
-//	}
+	@PostMapping("/postjob")
+	public ResponseEntity<?> postJob(@Valid @RequestBody JobPostingRequest jobPostingRequest) {
+
+		JobPostings jobPosting = new JobPostings();
+		jobPosting.setMinSalary(jobPostingRequest.getMinSalary());
+		jobPosting.setMaxSalary(jobPostingRequest.getMaxSalary());
+		jobPosting.setApplicationStatus(jobPostingRequest.getApplicationStatus());
+		jobPosting.setJobDescription(jobPostingRequest.getJobDescription());
+		jobPosting.setNoOfOpenings(jobPostingRequest.getNoOfOpenings());
+		jobPosting.setContractType(jobPostingRequest.getContractType());
+		jobPosting.setContractPeriod(jobPostingRequest.getContractPeriod());
+
+		jobPostingsRepository.save(jobPosting);
+
+		return ResponseEntity.status(HttpStatus.OK)
+				.body("job posted successfully");
+	}
 
 
 	// edit the job post 
