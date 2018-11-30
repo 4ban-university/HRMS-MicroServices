@@ -155,12 +155,12 @@ http://localhost:8762/employee/1
 }
 ```
 
-TODO
-
 ## Recruitment API
 
+### Job Postings
+
 GET
-http://localhost:8762/job
+http://localhost:8762/job/posting
 
 ```json
 [
@@ -178,7 +178,7 @@ http://localhost:8762/job
 ```
 
 POST
-http://localhost:8762/job
+http://localhost:8762/job/posting
 
 ```json
 {
@@ -193,7 +193,7 @@ http://localhost:8762/job
 ```
 
 PUT
-http://localhost:8762/job/1
+http://localhost:8762/job/posting/1
 
 ```json
 {
@@ -208,18 +208,56 @@ http://localhost:8762/job/1
 ```
 
 GET
-http://localhost:8762/job/1
+http://localhost:8762/job/posting/1
 
 GET
-http://localhost:8762/job/status/OPEN
-http://localhost:8762/job/status/CLOSED
+http://localhost:8762/job/posting/status/OPEN
+
+http://localhost:8762/job/posting/status/CLOSED
 
 GET
-http://localhost:8762/job/description/CEO
-
+http://localhost:8762/job/posting/description/CEO
 
 DELETE
-http://localhost:8762/job/1
+http://localhost:8762/job/posting/1
+
+### Job Applicants
+
+GET
+http://192.168.0.44:8762/job/applicant/
+
+POST
+http://localhost:8762/job/applicant/
+
+```json
+{
+    "firstName": "Adrien",
+    "lastName": "Poupa",
+    "email": "adrien@poupa.fr",
+    "status": "OPEN"
+}
+```
+
+GET
+http://192.168.0.44:8762/job/applicant/1
+
+PUT
+http://192.168.0.44:8762/job/applicant/1
+
+```json
+{
+    "firstName": "Adrien",
+    "lastName": "Poupa",
+    "email": "adrien@poupa.fr",
+    "status": "CLOSED"
+}
+```
+
+DELETE
+http://192.168.0.44:8762/job/applicant/1
+
+
+### Job Applicants Postings
 
 
 ## Credits
