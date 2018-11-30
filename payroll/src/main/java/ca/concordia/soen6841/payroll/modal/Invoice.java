@@ -1,4 +1,4 @@
-package com.hrms.soen6841.employee.pojo;
+package ca.concordia.soen6841.payroll.modal;
 
 public class Invoice {
     private String createdAt;

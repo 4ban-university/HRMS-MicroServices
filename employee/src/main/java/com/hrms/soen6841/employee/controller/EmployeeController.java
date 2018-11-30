@@ -2,7 +2,6 @@ package com.hrms.soen6841.employee.controller;
 
 import com.hrms.soen6841.employee.pojo.CustomResponse;
 import com.hrms.soen6841.employee.pojo.Employee;
-import com.hrms.soen6841.employee.pojo.Invoice;
 import com.hrms.soen6841.employee.pojo.Salary;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -74,14 +73,4 @@ public class EmployeeController {
         return response.getBody();
     }
 
-    @GetMapping("/invoice/{id}")
-    public CustomResponse<Invoice> generateInvoice(@PathVariable Long id) {
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<CustomResponse<Invoice>> response = restTemplate.exchange(
-                "http://localhost:8700/employee/invoice" + id,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<CustomResponse<Invoice>>(){});
-        return response.getBody();
-    }
 }
