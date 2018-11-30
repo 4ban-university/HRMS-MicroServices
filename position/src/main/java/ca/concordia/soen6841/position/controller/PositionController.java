@@ -61,4 +61,16 @@ public class PositionController {
                 String.class);
         return "Position deleted successfully";
     }
+
+    @PostMapping("/")
+    public String createPosition(@RequestBody Position positionPosting) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.exchange(
+                "http://localhost:8700/position/",
+                HttpMethod.POST,
+                new HttpEntity<>(positionPosting),
+                new ParameterizedTypeReference<Position>(){});
+        return "Position posted successfully";
+
+    }
 }

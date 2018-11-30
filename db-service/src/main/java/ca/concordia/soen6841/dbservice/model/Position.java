@@ -23,21 +23,21 @@ public class Position extends AuditModel {
     @Column(name = "end_date")
     private Date endDate;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
+//    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "employeeId", nullable = false)
+    private Long employeeId;
 
 
     public Position() {
 
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Long getEmployee() {
+        return employeeId;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployee(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public Integer getId() {

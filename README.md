@@ -2,22 +2,22 @@
 
 ## Introduction
 
-This is an HRMS module for an ERP system. The module provides opportunities or HR department to manage employees and vacancies of the company. Such as view the list of all employees with using filters, for example view a list of employees of a particular department. Create, delete or edit employee record in the system. Manage the company position, such as create, update or delete the job offers. Manage payrolls of employee.  
+This is an HRMS module for an ERP system. The module provides opportunities or HR department to manage employees and vacancies of the company. Such as view the list of all employees with using filters, for example view a list of employees of a particular department. Create, delete or edit employee record in the system. Manage the company position, such as create, update or delete the job offers. Manage payrolls of employee.
 
 
 
-The system is primarily designed to properly organize the work of the department, speed up the processes of hiring employees or opening vacancies necessary for the company. 
+The system is primarily designed to properly organize the work of the department, speed up the processes of hiring employees or opening vacancies necessary for the company.
 
 
 
-In this project, only the backend of the system is going to be implemented, although the frontend is included in the design to describe the entire system. 
+In this project, only the backend of the system is going to be implemented, although the frontend is included in the design to describe the entire system.
 
 ## Installation
 
 1) First, install Java on your system.
 2) Install the latest maven dependency manager.
 3) Install mysql.
-4) Update all spring boot configurations inside resources folder in 
+4) Update all spring boot configurations inside resources folder in
   /src/main/resources/application.properties file according to your own system configurations.
 5) mvn spring-boot:run
 6) Run migrations.sql file in the database.
@@ -25,8 +25,8 @@ In this project, only the backend of the system is going to be implemented, alth
 
 ## Running
 
-Run the eureka -> gateway -> auth -> employee.
-Go to individual subdirectories and run 
+Run the eureka -> gateway -> auth -> db-service -> [employee, payroll, position, recruitment].
+Go to individual subdirectories and run
 mvn spring-boot:run
 
 ## Architecture
@@ -285,6 +285,84 @@ http://localhost:8762/job/application
 {
     "applicantId": 9,
     "jobPostingId": 2
+}
+```
+
+
+## Position API
+
+GET
+http://localhost:8762/position/
+```json
+[
+    {
+        "id": 0,
+        "createdAt":"2018-11-27T00:35:58.000+0000",
+        "updatedAt":"2018-11-27T00:35:58.000+0000",
+        "designation": "designation",
+        "departmentName": "HR",
+        "startDate": "2014-12-12T00:31:58.000+0000",
+        "endDate": "2016-10-26T00:31:58.000+0000",
+        "employee": 1
+    },
+    {
+        "id": 1,
+        "createdAt":"2018-11-27T00:31:58.000+0000",
+        "updatedAt":"2018-11-27T00:31:58.000+0000",
+        "designation": "designation",
+        "departmentName": "IT",
+        "startDate": "2014-10-10T00:31:58.000+0000",
+        "endDate": "2016-05-06T00:31:58.000+0000",
+        "employee": 2
+    }
+]
+```
+
+GET
+http://localhost:8762/position/1
+```json
+{
+    "id": 1,
+    "createdAt":"2018-11-27T00:31:58.000+0000",
+    "updatedAt":"2018-11-27T00:31:58.000+0000",
+    "designation": "designation",
+    "departmentName": "IT",
+    "startDate": "2014-10-10T00:31:58.000+0000",
+    "endDate": "2016-05-06T00:31:58.000+0000",
+    "employee": 1
+}
+```
+
+DELETE
+http://localhost:8762/position/1
+```json
+{
+    "message": "Position deleted successfully."
+}
+```
+
+POST
+http://localhost:8762/position/
+```json
+{
+    "designation": "designation",
+    "departmentName": "IT",
+    "startDate": "2014-10-10",
+    "endDate": "2016-05-06",
+    "employee": 1
+}
+```
+
+PUT
+http://localhost:8762/position/1
+
+```json
+{
+    "designation": "designation",
+    "departmentName": "HR",
+    "startDate": "2014-10-10",
+    "endDate": "2016-05-06",
+    "employee": 1
 }
 ```
 
