@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Tax")
-public class Tax extends AuditModel {
+public class Tax {
     @Id
     @GeneratedValue
     @Column(name = "id")

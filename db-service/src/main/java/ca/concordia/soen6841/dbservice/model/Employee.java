@@ -1,6 +1,9 @@
 package ca.concordia.soen6841.dbservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,30 +16,40 @@ public class Employee extends AuditModel{
     private Long id;
 
     @Column(name = "first_name")
+    @NotBlank
+    @Size(min = 4, max = 40)
     private String firstName;
 
     @Column(name = "last_name")
+    @NotBlank
+    @Size(min = 4, max = 40)
     private String lastName;
 
     @Column(name = "date_of_birth")
+    @NotBlank
     private String dateOfBirth;
 
     @Column(name = "hiring_date")
+    @NotBlank
     private String hiringDate;
 
     @Column(name = "province")
+    @NotBlank
     private String province;
 
     @Column(name = "postal_code")
+    @NotBlank
     private String postalCode;
 
     @Column(name = "username")
+    @JsonIgnore
     private String username;
 
     @Column(name = "email")
     private String email;
 
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
     @Column (name = "salary")
@@ -45,6 +58,7 @@ public class Employee extends AuditModel{
     @Column (name = "bonus")
     private Long bonus;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Employee_roles",
             joinColumns = @JoinColumn(name = "user_id"),

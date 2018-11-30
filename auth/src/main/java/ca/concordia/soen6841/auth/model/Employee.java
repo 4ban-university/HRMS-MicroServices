@@ -1,5 +1,7 @@
 package ca.concordia.soen6841.auth.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,6 +39,7 @@ public class Employee extends AuditModel{
     private String email;
 
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
     @Column (name = "salary")
@@ -49,6 +52,7 @@ public class Employee extends AuditModel{
     @JoinTable(name = "Employee_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JsonIgnore
     private Set<Role> roles = new HashSet<>();
 
     public Employee() {

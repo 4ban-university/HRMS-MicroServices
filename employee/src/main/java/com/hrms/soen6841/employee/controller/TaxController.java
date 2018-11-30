@@ -1,5 +1,6 @@
 package com.hrms.soen6841.employee.controller;
 
+import com.hrms.soen6841.employee.pojo.CustomResponse;
 import com.hrms.soen6841.employee.pojo.Tax;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -25,35 +26,35 @@ public class TaxController {
     }
 
     @PostMapping("/")
-    public Tax addTax(@RequestBody Tax newTax) {
+    public CustomResponse<Tax> addTax(@RequestBody Tax newTax) {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Tax> response = restTemplate.exchange(
+        ResponseEntity<CustomResponse<Tax>> response = restTemplate.exchange(
                 "http://localhost:8700/tax/",
                 HttpMethod.POST,
                 new HttpEntity<>(newTax),
-                Tax.class);
+                new ParameterizedTypeReference<CustomResponse<Tax>>(){});
         return response.getBody();
     }
 
     @PutMapping("/{id}")
-    public Tax editTax(@RequestBody Tax newTax, @PathVariable Long id) {
+    public CustomResponse<Tax> editTax(@RequestBody Tax newTax, @PathVariable Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Tax> response = restTemplate.exchange(
+        ResponseEntity<CustomResponse<Tax>> response = restTemplate.exchange(
                 "http://localhost:8700/tax/" + id,
                 HttpMethod.PUT,
                 new HttpEntity<>(newTax),
-                Tax.class);
+                new ParameterizedTypeReference<CustomResponse<Tax>>(){});
         return response.getBody();
     }
 
     @DeleteMapping("/{id}")
-    public String deleteTax(@PathVariable Long id) {
+    public CustomResponse<Tax> deleteTax(@PathVariable Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange(
+        ResponseEntity<CustomResponse<Tax>> response = restTemplate.exchange(
                 "http://localhost:8700/tax/" + id,
                 HttpMethod.DELETE,
                 null,
-                String.class);
+                new ParameterizedTypeReference<CustomResponse<Tax>>(){});
         return response.getBody();
     }
 }

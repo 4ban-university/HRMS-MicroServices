@@ -20,7 +20,6 @@ public class PositionController {
 
     @GetMapping("/{id}")
     public Position getPositionById(@PathVariable Integer id) {
-
         return positionRepository.findById(id)
                 .orElseThrow(() -> new PositionNotFoundException(id));
     }
