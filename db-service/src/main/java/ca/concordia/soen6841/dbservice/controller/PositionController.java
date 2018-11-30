@@ -37,9 +37,9 @@ public class PositionController {
 
         position.setDesignation(newPosition.getDesignation());
         position.setDepartmentName(newPosition.getDepartmentName());
-        position.setEmployee(newPosition.getEmployee());
         position.setStartDate(newPosition.getStartDate());
         position.setEndDate(newPosition.getEndDate());
+        position.setEmployee(newPosition.getEmployee());
 
         CustomResponse<Position> response =  new CustomResponse<>();
         response.setData(positionRepository.save(position));
