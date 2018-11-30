@@ -224,10 +224,10 @@ http://localhost:8762/job/1
 ### Job Applicants
 
 GET
-http://192.168.0.44:8762/job/applicant/
+http://localhost:8762/job/applicant
 
 POST
-http://localhost:8762/job/applicant/
+http://localhost:8762/job/applicant
 
 ```json
 {
@@ -239,10 +239,10 @@ http://localhost:8762/job/applicant/
 ```
 
 GET
-http://192.168.0.44:8762/job/applicant/1
+http://localhost:8762/job/applicant/1
 
 PUT
-http://192.168.0.44:8762/job/applicant/1
+http://localhost:8762/job/applicant/1
 
 ```json
 {
@@ -254,10 +254,40 @@ http://192.168.0.44:8762/job/applicant/1
 ```
 
 DELETE
-http://192.168.0.44:8762/job/applicant/1
+http://localhost:8762/job/applicant/1
 
 
 ### Job Applicants Postings
+
+GET
+http://localhost:8762/job/application
+
+POST
+http://localhost:8762/job/application
+
+```json
+{
+{
+    "applicantId": 1,
+    "jobPostingId": 1
+}
+```
+
+GET
+http://localhost:8762/job/application/applicant/1
+
+GET
+http://localhost:8762/job/application/job/1
+
+DELETE
+http://localhost:8762/job/application
+
+```json
+{
+    "applicantId": 9,
+    "jobPostingId": 2
+}
+```
 
 
 ## Credits
