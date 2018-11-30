@@ -46,4 +46,23 @@ public class PositionController {
         response.setMessage("Position created successfully");
         return response;
     }
+
+    @PutMapping("/{id}")
+    public CustomResponse<Position> editPosition(@RequestBody Position newPosition, @PathVariable(value = "id", required = true) Integer id) {
+        positionRepository.findById(id)
+                .orElseThrow(() -> new PositionNotFoundException(id));
+
+        Position position = new Position();
+        position.setDesignation(newPosition.getDesignation());
+        position.setDepartmentName(newPosition.getDepartmentName());
+        position.setStartDate(newPosition.getStartDate());
+        position.setEndDate(newPosition.getEndDate());
+        position.setEmployee(newPosition.getEmployee());
+
+
+        CustomResponse<Position> response =  new CustomResponse<>();
+        response.setData(positionRepository.save(position));
+        response.setMessage("Position edited successfully");
+        return response;
+    }
 }
