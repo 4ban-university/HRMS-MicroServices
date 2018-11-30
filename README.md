@@ -2,31 +2,31 @@
 
 ## Introduction
 
-This is an HRMS module for an ERP system. The module provides opportunities or HR department to manage employees and vacancies of the company. Such as view the list of all employees with using filters, for example view a list of employees of a particular department. Create, delete or edit employee record in the system. Manage the company position, such as create, update or delete the job offers. Manage payrolls of employee.  
+This is an HRMS module for an ERP system. The module provides opportunities or HR department to manage employees and vacancies of the company. Such as view the list of all employees with using filters, for example view a list of employees of a particular department. Create, delete or edit employee record in the system. Manage the company position, such as create, update or delete the job offers. Manage payrolls of employee.
 
- 
 
-The system is primarily designed to properly organize the work of the department, speed up the processes of hiring employees or opening vacancies necessary for the company. 
 
- 
+The system is primarily designed to properly organize the work of the department, speed up the processes of hiring employees or opening vacancies necessary for the company.
 
-In this project, only the backend of the system is going to be implemented, although the frontend is included in the design to describe the entire system. 
+
+
+In this project, only the backend of the system is going to be implemented, although the frontend is included in the design to describe the entire system.
 
 ## Installation
 
 1) First, install Java on your system.
 2) Install the latest maven dependency manager.
 3) Install mysql.
-4) Update all spring boot configurations inside resources folder in 
+4) Update all spring boot configurations inside resources folder in
     /src/main/resources/application.properties file according to your own system configurations.
 5) mvn spring-boot:run
 6) Run migrations.sql file in the database.
 
-  
+
 ## Running
 
-Run the eureka -> gateway -> auth -> employee.
-Go to individual subdirectories and run 
+Run the eureka -> gateway -> auth -> db-service -> [employee, position, payroll, recruitment].
+Go to individual subdirectories and run
 mvn spring-boot:run
 
 ## Architecture
@@ -49,8 +49,8 @@ Every request will hit the Gateway first, if need be, it will validate the token
   ***************************************************************************************
   POST
   http://localhost:8762/auth/signup
-  
-  Request params:- 
+
+  Request params:-
   {
     "firstName": "Kaushik",
     "lastName": "Samanta",
@@ -62,31 +62,32 @@ Every request will hit the Gateway first, if need be, it will validate the token
     "email": "kaushiksamanta23@gmail.com",
     "password": "1234567890"
   }
-  
+
   Response:-
   Employee registered successfully
- 
+
   ****************************************************************************************
   POST
   http://localhost:8762/auth/login
 
-  Request params:- 
+  Request params:-
   {
    "username" : "kaushik23",
    "password" : "1234567890"
   }
-  
+
   To get the token, look at the Headers tab in Postman, take the value of the Bearer key.
 
   Later, when you need to authenticate for a service, use the token and put it in the "Authorization" tab of Postman, then select Bearer token as Type.
-  
+
  ## Employee Api's
- 
+
   *****************************************************************************************
   GET
   http://localhost:8762/employee/
-  
-  Response:-
+
+  Response:
+```
   [
     {
         "createdAt": "2018-11-19T00:31:58.000+0000",
@@ -131,12 +132,13 @@ Every request will hit the Gateway first, if need be, it will validate the token
         "jobpostings": []
     }
   ]
-  
+```
   ************************************************************************************************
   GET
   http://localhost:8762/employee/1
-  
-  Response:-
+
+  Response:
+```
   {
     "createdAt": "2018-11-19T00:31:58.000+0000",
     "updatedAt": "2018-11-19T00:31:58.000+0000",
@@ -158,10 +160,10 @@ Every request will hit the Gateway first, if need be, it will validate the token
     ],
     "jobpostings": []
   }
- 
+```
   ## Credits
-  
+
   https://medium.com/omarelgabrys-blog/microservices-with-spring-boot-authentication-with-jwt-part-3-fafc9d7187e8 was used
-  
+
   ## JSON To POJO Convertor
   http://www.jsonschema2pojo.org/
