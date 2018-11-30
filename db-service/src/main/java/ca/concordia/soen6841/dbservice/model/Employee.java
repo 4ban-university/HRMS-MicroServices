@@ -1,10 +1,13 @@
 package ca.concordia.soen6841.dbservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -69,17 +72,17 @@ public class Employee extends AuditModel{
     @JoinTable(name = "Employee_jobPostings",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "jobposting_id"))
-    private Set<JobPostings> Jobpostings = new HashSet<>();
+    private List<JobPostings> Jobpostings = new ArrayList<>();
 
     public Employee() {
 
     }
 
-    public Set<JobPostings> getJobpostings() {
+    public List<JobPostings> getJobpostings() {
         return Jobpostings;
     }
 
-    public void setJobpostings(Set<JobPostings> jobpostings) {
+    public void setJobpostings(List<JobPostings> jobpostings) {
         Jobpostings = jobpostings;
     }
 

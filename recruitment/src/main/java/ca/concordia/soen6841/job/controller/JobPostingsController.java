@@ -15,16 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/")
 public class JobPostingsController {
 
 	// Get all posted jobs
-	@GetMapping("/")
+	@GetMapping("")
 	public List<JobPostings> getJobPostingsList() {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<List<JobPostings>> response = restTemplate.exchange(
@@ -72,14 +70,14 @@ public class JobPostingsController {
 	}
 
 	// Post a job
-	@PostMapping("/")
+	@PostMapping("")
 	public String postJob(@Valid @RequestBody JobPostings jobPosting) {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.exchange(
 				"http://localhost:8700/jobpostings/postjob/",
 				HttpMethod.POST,
 				new HttpEntity<>(jobPosting),
-				new ParameterizedTypeReference<JobPostings>(){});
+				new ParameterizedTypeReference<String>(){});
 		return "Job posted successfully";
 	}
 

@@ -1,9 +1,12 @@
-package ca.concordia.soen6841.job.pojo;
+package ca.concordia.soen6841.dbservice.payloads;
+
+import javax.validation.constraints.NotNull;
 
 public class JobApplicantsPostings {
-
+    @NotNull
     private Number applicantId;
 
+    @NotNull
     private Number jobPostingId;
 
     public JobApplicantsPostings() {

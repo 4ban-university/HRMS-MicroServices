@@ -20,7 +20,6 @@ public class JobPostingsCustomRepositoryImpl implements JobPostingsCustomReposit
 	
 	@Override
 	public List<JobPostings> findJobByStatus(String status) {
-		
 		Query query = entityManager.createNativeQuery("SELECT jp.* FROM hrms.job_postings as jp " +
                 "WHERE jp.application_status = ?", JobPostings.class);
         query.setParameter(1, status);
@@ -29,7 +28,6 @@ public class JobPostingsCustomRepositoryImpl implements JobPostingsCustomReposit
 
 	@Override
 	public List<JobPostings> findJobByDesc(String description) {
-		
 		Query query = entityManager.createNativeQuery("SELECT jp.* FROM hrms.job_postings as jp "+
 				"WHERE jp.job_description LIKE ?", JobPostings.class);
 		query.setParameter(1, "%" + description + "%");

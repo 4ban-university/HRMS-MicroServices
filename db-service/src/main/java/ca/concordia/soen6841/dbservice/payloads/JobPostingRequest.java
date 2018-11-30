@@ -1,14 +1,11 @@
 package ca.concordia.soen6841.dbservice.payloads;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 public class JobPostingRequest {
 
-	//@NotEmpty
 	private Number minSalary;
 
-	//@NotEmpty
 	private Number maxSalary;
 
 	@NotBlank
@@ -23,7 +20,6 @@ public class JobPostingRequest {
 	@NotBlank
 	private String contractType;
 
-	//@NotEmpty
 	private Integer contractPeriod;
 
 	public Number getMinSalary() {

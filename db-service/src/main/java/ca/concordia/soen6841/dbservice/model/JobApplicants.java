@@ -6,6 +6,7 @@ import java.util.HashSet;
 
 @Entity
 @Table(name = "JobApplicants")
+
 public class JobApplicants extends AuditModel {
     @Id
     @GeneratedValue

@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/applicant")
 public class JobApplicantsController {
     // Get all job applicants
-    @GetMapping("/")
+    @GetMapping("")
     public List<JobApplicants> getJobApplicantsList() {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<JobApplicants>> response = restTemplate.exchange(
@@ -43,11 +43,11 @@ public class JobApplicantsController {
     public String postJob(@Valid @RequestBody JobApplicants jobPosting) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.exchange(
-                "http://localhost:8700/jobapplicants/postjob/",
+                "http://localhost:8700/jobapplicants/postjobapplicant/",
                 HttpMethod.POST,
                 new HttpEntity<>(jobPosting),
-                new ParameterizedTypeReference<JobApplicants>(){});
-        return "Job posted successfully";
+                new ParameterizedTypeReference<String>(){});
+        return "Job applicant posted successfully";
 
     }
 
@@ -59,7 +59,7 @@ public class JobApplicantsController {
                 HttpMethod.DELETE,
                 null,
                 String.class);
-        return "Job deleted successfully";   // return a message to postman as notification
+        return "Job applicant deleted successfully";   // return a message to postman as notification
     }
 
     // Edit the job post
