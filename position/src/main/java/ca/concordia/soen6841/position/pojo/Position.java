@@ -9,6 +9,11 @@ public class Position {
     private String departmentName;
     private Date startDate;
     private Date endDate;
+    private Integer employeeId;
+
+    public Position() {
+
+    }
 
     public Integer getId() {
         return id;
@@ -48,5 +53,13 @@ public class Position {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Integer getEmplpyeeId() {
+        return employeeId;
+    }
+
+    public void setEmplpyeeId(Integer emplpyeeId) {
+        this.employeeId = emplpyeeId;
     }
 }
