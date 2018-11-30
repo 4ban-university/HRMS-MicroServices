@@ -160,7 +160,7 @@ http://localhost:8762/employee/1
 ### Job Postings
 
 GET
-http://localhost:8762/job/posting
+http://localhost:8762/job
 
 ```json
 [
@@ -178,7 +178,7 @@ http://localhost:8762/job/posting
 ```
 
 POST
-http://localhost:8762/job/posting
+http://localhost:8762/job
 
 ```json
 {
@@ -193,7 +193,7 @@ http://localhost:8762/job/posting
 ```
 
 PUT
-http://localhost:8762/job/posting/1
+http://localhost:8762/job/1
 
 ```json
 {
@@ -208,18 +208,18 @@ http://localhost:8762/job/posting/1
 ```
 
 GET
-http://localhost:8762/job/posting/1
+http://localhost:8762/job/1
 
 GET
-http://localhost:8762/job/posting/status/OPEN
+http://localhost:8762/job/status/OPEN
 
-http://localhost:8762/job/posting/status/CLOSED
+http://localhost:8762/job/status/CLOSED
 
 GET
-http://localhost:8762/job/posting/description/CEO
+http://localhost:8762/job/description/CEO
 
 DELETE
-http://localhost:8762/job/posting/1
+http://localhost:8762/job/1
 
 ### Job Applicants
 
