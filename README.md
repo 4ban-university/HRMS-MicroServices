@@ -267,7 +267,6 @@ http://localhost:8762/job/application
 
 ```json
 {
-{
     "applicantId": 1,
     "jobPostingId": 1
 }
