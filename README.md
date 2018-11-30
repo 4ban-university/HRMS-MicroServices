@@ -259,6 +259,7 @@ http://192.168.0.44:8762/job/applicant/1
 
 ### Job Applicants Postings
 
+
 ## Position API
 
 GET
@@ -335,6 +336,7 @@ http://localhost:8762/position/1
     "employee": 1
 }
 ```
+
 
 ## Credits
 
