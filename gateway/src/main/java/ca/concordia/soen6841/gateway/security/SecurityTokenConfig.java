@@ -30,11 +30,16 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JwtTokenAuthenticationFilter(jwtConfig), UsernamePasswordAuthenticationFilter.class)
                 // authorization requests config
                 .authorizeRequests()
-                // allow all who are accessing "auth" service
                 .antMatchers(HttpMethod.POST, "/auth/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/auth/**").permitAll()
-                // must be an employee if trying to access the list of employees
-                .antMatchers("/employee/all/**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.POST, "/position/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/position/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/position/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/invoice/**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.POST, "/job/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/job/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/job/**").hasRole("ADMIN")
+                .antMatchers("/employee/**").hasRole("ADMIN")
                 // Any other request is allowed
                 .anyRequest().permitAll();
     }
