@@ -3,10 +3,11 @@
 ## Team 2
 ### Team Members
 ### 1) Arnav Bhardwaj  - 40060118
-### 2) Dmitry Kryukov  - 40029645
-### 3) Ksenia Popova   - 40029623
-### 4) Kaushik Samanta - 40049821
-### 5) Neha Pal		   - 40070634
+### 2) Adrien Poupa		   - 40059458 
+### 3) Dmitry Kryukov  - 40029645
+### 4) Ksenia Popova   - 40029623
+### 5) Kaushik Samanta - 40049821
+### 6) Neha Pal		   - 40070634
 
 ## Introduction
 
