@@ -1,5 +1,13 @@
 # HRMS (Human resources management system) ERP
 
+## Team 2
+### Team Members
+### 1) Arnav Bhardwaj  - 40060118
+### 2) Dmitry Kryukov  - 40029645
+### 3) Ksenia Popova   - 40029623
+### 4) Kaushik Samanta - 40049821
+### 5) Neha Pal		   - 40070634
+
 ## Introduction
 
 This is an HRMS module for an ERP system. The module provides opportunities or HR department to manage employees and vacancies of the company. Such as view the list of all employees with using filters, for example view a list of employees of a particular department. Create, delete or edit employee record in the system. Manage the company position, such as create, update or delete the job offers. Manage payrolls of employee.
